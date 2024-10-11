@@ -1,0 +1,14 @@
+
+// Flexbox Styles
+
+@mixin flex-inline-items {
+  display: flex;
+  flex-direction: inline;
+  align-items: center;
+  justify-content: center;
+}
+@mixin flex-center-items {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

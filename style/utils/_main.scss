@@ -1,0 +1,143 @@
+@import "utils/variables";
+@import "utils/mixins";
+
+// navbar with dropdown menu
+
+.nav {
+  @include flex-inline-items;
+  overflow: hidden;
+  background-color: $active-color;
+
+  a {
+    padding: 14px 16px;
+    float: left;
+    display: block;
+    text-decoration: none;
+    font-size: $font-size-base;
+    color: $text-color;
+
+    &:hover {
+      background-color: $hover-color;
+      color: $text-color;
+    }
+  }
+}
+
+.active {
+  background-color: $active-color;
+  color: $text-color;
+}
+
+.nav .icon {
+  display: none;
+}
+
+.drop_down {
+  overflow: hidden;
+
+  .drop_btn {
+    font-size: $font-size-base;
+    border: none;
+    outline: none;
+    color: $text-color;
+    padding: 10px 20px;
+    background-color: $active-color;
+    margin: 0;
+    display: block;
+  }
+
+  &:hover .drop_btn {
+    background-color: $hover-color;
+    color: $text-color;
+  }
+  .dropdown_content {
+    display: none;
+    position: absolute;
+    background-color: $active-color;
+    min-width: 160px;
+    z-index: 1;
+
+    a {
+      float: none;
+      color: $text-color;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: flex;
+      text-align: left;
+
+      &:hover {
+        background-color: $active-color;
+        color: $hover-color;
+      }
+    }
+  }
+
+  &:hover .dropdown_content {
+    display: block;
+  }
+}
+
+// Main content
+
+.main_title {
+  @include flex-center-items;
+  color: $text-color;
+  margin-top: 40px;
+  &-info {
+    @include flex-center-items;
+    font-size: $font-size-base;
+    margin-top: 40px;
+  }
+}
+.footer_copy {
+  position: absolute;
+  bottom: 10px;
+  width: 50%;
+  &-h2 {
+    color: $footer-color;
+    font-size: $font-size-h2;
+  }
+  &-res {
+    font-size: $font-size-copyright;
+    color: $footer-color;
+  }
+}
+
+// Mobile responsive styles
+
+@media screen and (max-width: 600px) {
+  .nav a:not(:first-child),
+  .drop_down .drop_btn {
+    display: none;
+  }
+  .nav a.icon {
+    float: right;
+    display: block;
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .nav.responsive {
+    position: relative;
+  }
+  .nav.responsive .icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  .nav.responsive a {
+    float: none;
+    display: block;
+  }
+  .nav.responsive .drop_down {
+    float: none;
+  }
+  .nav.responsive .dropdown_content {
+    position: fixed;
+  }
+  .nav.responsive .drop_down .drop_btn {
+    display: block;
+    text-align: left;
+  }
+}
